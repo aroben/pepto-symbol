@@ -8,6 +8,17 @@ var proxy = new HTTPProxy.RoutingProxy();
 HTTP.createServer(function(request, response) {
   var innerURL = request.url.substr(1);
   var parsedURL = URL.parse(innerURL);
+  if (!parsedURL.hostname) {
+    var body = 'Invalid URL ' + innerURL;
+    response.writeHead(400, {
+      'Content-Length': body.length,
+      'Content-Type': 'text/plain'
+    });
+    response.write(body);
+    response.end();
+    return;
+  }
+
   request.url = innerURL.toLowerCase();
 
   proxy.proxyRequest(request, response, {
