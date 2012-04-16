@@ -3,9 +3,7 @@ var HTTP = require('http')
   , URL = require('url')
   ;
 
-var proxy = new HTTPProxy.RoutingProxy();
-
-HTTP.createServer(function(request, response) {
+HTTPProxy.createServer(function(request, response, proxy) {
   var innerURL = request.url.substr(1);
   var parsedURL = URL.parse(innerURL);
   if (!parsedURL.hostname) {
