@@ -2,6 +2,6 @@
   "name": "lowercaseme",
   "version": "0.0.1",
   "dependencies": {
-    "http-proxy": "0.8.0"
+    "http-proxy": "0.7.6"
   }
 }
