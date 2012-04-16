@@ -14,4 +14,4 @@ HTTP.createServer(function(request, response) {
     host: parsedURL.hostname,
     port: 80,
   });
-}).listen(8001);
+}).listen(process.env.PORT);
