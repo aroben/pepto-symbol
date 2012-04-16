@@ -3,7 +3,16 @@ var HTTP = require('http')
   , URL = require('url')
   ;
 
-HTTPProxy.createServer(function(request, response, proxy) {
+HTTPProxy.createServer(function(request, response, next) {
+  var original = response.writeHead;
+  response.writeHead = function() {
+    var args = Array.prototype.slice.call(arguments);
+    if (args[0] == 403)
+      args[0] = 404;
+    original.apply(response, args);
+  };
+  next();
+}, function(request, response, proxy) {
   var innerURL = request.url.substr(1);
   var parsedURL = URL.parse(innerURL);
   if (!parsedURL.hostname) {
