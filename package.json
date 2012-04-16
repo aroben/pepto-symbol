@@ -1,6 +1,9 @@
 {
   "name": "lowercaseme",
   "version": "0.0.1",
+  "engines": {
+    "node": "0.6.x"
+  },
   "dependencies": {
     "http-proxy": "0.8.0"
   }
