@@ -1,7 +1,7 @@
-var HTTP = require('http')
-  , HTTPProxy = require('http-proxy')
-  , URL = require('url')
-  ;
+const HTTP = require('http')
+    , HTTPProxy = require('http-proxy')
+    , URL = require('url')
+    ;
 
 HTTPProxy.createServer(function(request, response, next) {
   var original = response.writeHead;
