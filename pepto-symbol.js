@@ -22,4 +22,14 @@ function fixHostHeader(request, response, next) {
   next();
 }
 
-HTTPProxy.createServer(TARGET_HOST, 80, convert403To404, fixHostHeader).listen(process.env.PORT);
+// symstore.exe and symsrv.dll don't always agree on the case of the path to a
+// given symbol file. Since S3 URLs are case-sensitive, this causes symbol
+// loads to fail. To get around this, we assume that the symbols were uploaded
+// to S3 with all-lowercase keys, and we lowercase all requests we receive to
+// match.
+function lowercaseURL(request, response, next) {
+  request.url = request.url.toLowerCase();
+  next();
+}
+
+HTTPProxy.createServer(TARGET_HOST, 80, convert403To404, fixHostHeader, lowercaseURL).listen(process.env.PORT);
