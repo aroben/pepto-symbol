@@ -33,7 +33,7 @@ heroku config:add S3_BUCKET=my-bucket
 git push heroku master
 ```
 
-(It should be fairly simple to deploy it elsewhere if neded.)
+(It should be fairly simple to deploy it elsewhere if needed.)
 
 Next, add the following URL to your symbol path:
 
