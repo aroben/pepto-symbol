@@ -1,1 +1,1 @@
-web: node lowercaseme.js
+web: node pepto-symbol.js
