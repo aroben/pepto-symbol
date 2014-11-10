@@ -31,7 +31,7 @@ proxy.on('proxyReq', function(proxyReq, request, response, options) {
 // to S3 with all-lowercase keys, and we lowercase all requests we receive to
 // match.
 proxy.on('proxyReq', function(proxyReq, request, response, options) {
-  proxyReq.url = request.url.toLowerCase();
+  proxyReq.path = proxyReq.path.toLowerCase();
 });
 
 http.createServer(function(request, response) {
