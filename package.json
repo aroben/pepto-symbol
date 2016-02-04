@@ -5,6 +5,7 @@
     "node": "0.10.x"
   },
   "dependencies": {
-    "http-proxy": "1.6.1"
+    "http-proxy": "1.6.1",
+    "eventemitter3": "0.1.6"
   }
 }
