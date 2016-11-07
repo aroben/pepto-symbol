@@ -2,9 +2,12 @@
   "name": "pepto-symbol",
   "version": "0.0.1",
   "engines": {
-    "node": "0.10.x"
+    "node": "6.9.1"
   },
   "dependencies": {
-    "http-proxy": "1.6.1"
+    "http-proxy": "1.15.2"
+  },
+  "scripts": {
+    "start": "node pepto-symbol.js"
   }
 }
