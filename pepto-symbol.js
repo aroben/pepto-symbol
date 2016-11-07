@@ -3,6 +3,7 @@ var httpProxy = require('http-proxy');
 
 const TARGET_HOST = process.env.S3_BUCKET + '.s3.amazonaws.com';
 const TARGET = 'http://' + TARGET_HOST;
+const PATH_PREFIX = process.env.PATH_PREFIX || '';
 
 // Create a proxy server with custom application logic.
 var proxy = httpProxy.createProxyServer({});
@@ -31,7 +32,7 @@ proxy.on('proxyReq', function(proxyReq, request, response, options) {
 // to S3 with all-lowercase keys, and we lowercase all requests we receive to
 // match.
 proxy.on('proxyReq', function(proxyReq, request, response, options) {
-  proxyReq.path = proxyReq.path.toLowerCase();
+  proxyReq.path = PATH_PREFIX + proxyReq.path.toLowerCase();
 });
 
 http.createServer(function(request, response) {

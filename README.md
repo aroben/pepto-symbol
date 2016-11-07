@@ -43,6 +43,17 @@ http://pepto-symbol.gadgetron.com/awesome/symbols
 
 That's it!
 
+### Path Prefix
+
+You can add an optional `PATH_PREFIX` environment variables for shorter URLs.
+This prefix will be prepended to all requests paths to the S3 bucket.
+
+```shell
+heroku config:add PATH_PREFIX=/awesome/symbols
+```
+
+Now the symbol server URL can be `http://pepto-symbol.gadgetron.com`.
+
 ### Running locally
 
 To run Pepto Symbol locally on port 5000:
